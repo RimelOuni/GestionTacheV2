@@ -1,0 +1,170 @@
+/* styles.css */
+.task-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.task {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.task:hover {
+  background-color: #f9f9f9;
+}
+
+.task-details {
+  flex-grow: 1;
+}
+
+.title-status {
+  display: flex;
+  align-items: baseline;
+}
+
+.title-status h3 {
+  margin-right: 10px;
+}
+
+.task-status {
+  font-style: italic;
+  color: #555;
+}
+
+.description {
+  margin-top: 5px;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  background: #fff;
+  border: 2px solid #4CAF50;
+  border-radius: 50%;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  text-align: center; /* Ajout de cette propriété pour centrer la coche */
+  line-height: 18px; /* Ajout de cette propriété pour centrer la coche */
+}
+
+input[type="checkbox"]:checked + label {
+  background: #4CAF50;
+  border-color: #4CAF50;
+  color: #fff; /* Ajout de cette propriété pour rendre la coche visible */
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #777;
+}
+
+form {
+  margin-top: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+textarea {
+  height: 100px;
+  width: 100%;
+}
+
+/* Ajouter un style pour l'en-tête */
+.task-header {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.task-header .task-details {
+  padding: 10px;
+}
+
+.task-header h3,
+.task-header p,
+.task-header .description,
+.task-header .task-actions {
+  color: #333;
+}
+
+  
+
+
+
+
+
+
+/*header*/
+/* Toolbar Styles */
+mat-toolbar {
+  background-color: #9ebdd6; /* Change the background color */
+  color: black; /* Change the text color */
+}
+
+/* Sidenav Styles */
+mat-sidenav-container {
+  height: 100vh; /* Set the height of the sidenav container */
+}
+
+.mat-sidenav {
+  background-color: #f8f9fa; /* Change the background color of the sidenav */
+  color: #495057; /* Change the text color of the sidenav */
+}
+
+.mat-nav-list a {
+  color: black; /* Change the link color in the sidenav */
+}
+
+/* Sidenav Content Styles */
+.mat-sidenav-content {
+  padding: 20px; /* Add padding to the content area */
+}
+
+/* Custom Styling for the Main Content */
+.main-content {
+  background-color: #e9ecef; /* Change the background color of the main content */
+}
+
+/* Optional: Adjust styles for smaller screens */
+@media screen and (max-width: 768px) {
+  .mat-sidenav {
+    width: 100%; /* Make the sidenav full-width on smaller screens */
+  }
+
+  .mat-sidenav-container {
+    height: auto; /* Allow the sidenav container to adjust its height */
+  }
+}
+
+/* Custom Styles for the Icon Button */
+.custom-icon-button {
+  background-color: #9ebdd6; /* Change the background color of the icon button */
+  color: black; /* Change the text color of the icon button */
+  margin-top: 0px;
+}
+
+/* Hover effect for the icon button (optional) */
+.custom-icon-button:hover {
+  background-color: #9ebdd6;  /* Change the background color on hover */
+
+}
+
+
+

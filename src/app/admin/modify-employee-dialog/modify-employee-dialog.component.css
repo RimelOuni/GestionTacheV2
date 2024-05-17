@@ -1,0 +1,33 @@
+/* modify-employee-dialog.component.css */
+
+h1 {
+  color: #00796b;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-error {
+  color: #d32f2f;
+}
+
+mat-dialog-actions {
+  width: 100%; 
+  display: flex;
+  margin-top: 20px;
+}
+
+button {
+  min-width: 80px;
+  margin-left: auto; /* Push the first button to the right */
+  margin-right: auto; /* Push the second button to the left */
+}

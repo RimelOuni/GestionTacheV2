@@ -1,0 +1,61 @@
+/* Toolbar Styles */
+mat-toolbar {
+  background-color: #9ebdd6; /* Change the background color */
+  color: black; /* Change the text color */
+}
+
+/* Sidenav Styles */
+mat-sidenav-container {
+  height: 100vh; /* Set the height of the sidenav container */
+}
+
+.mat-sidenav {
+  background-color: #f8f9fa; /* Change the background color of the sidenav */
+  color: #495057; /* Change the text color of the sidenav */
+}
+
+.mat-nav-list a {
+  color: black; /* Change the link color in the sidenav */
+}
+
+/* Sidenav Content Styles */
+.mat-sidenav-content {
+  padding: 20px; /* Add padding to the content area */
+}
+
+/* Custom Styling for the Main Content */
+.main-content {
+  background-image: url('../../../assets/cvr.png'); /* Ajoutez votre URL d'image de fond */
+  background-size: cover;
+  background-position: center;
+   /* Change the background color of the main content */
+}
+
+/* Optional: Adjust styles for smaller screens */
+@media screen and (max-width: 768px) {
+  .mat-sidenav {
+    width: 100%; /* Make the sidenav full-width on smaller screens */
+  }
+
+  .mat-sidenav-container {
+    height: auto; /* Allow the sidenav container to adjust its height */
+  }
+}
+
+/* Custom Styles for the Icon Button */
+.custom-icon-button {
+  background-color: #9ebdd6; /* Change the background color of the icon button */
+  color: black; /* Change the text color of the icon button */
+}
+
+/* Hover effect for the icon button (optional) */
+.custom-icon-button:hover {
+  background-color: white; /* Change the background color on hover */
+}
+
+/* Custom Styles for the Logout Button */
+.logout-button {
+  margin-left: auto; /* Move the logout button to the right */
+  background-color: #9ebdd6;
+}
+

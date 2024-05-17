@@ -1,0 +1,117 @@
+.user-list-container,
+.add-user-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+button {
+    background-color: transparent;
+    /*color: #fff; */
+    border: none;
+    padding: 8px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button i {
+    margin-right: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.user-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.user-list-container th, .user-list-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.user-list-container th {
+    background-color: #f2f2f2;
+}
+.add-user-button-container {
+    
+}
+.add-user-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-user-button:hover {
+    background-color: #2980b9;
+}
+
+/* CSS pour les boutons */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.action-button.cancel-button {
+    background-color: #ff5555;
+}
+
+.action-button:hover {
+    background-color: #2980b9;
+}
+
+/* CSS pour les icônes */
+.action-button i {
+    margin-right: 5px;
+}
+
+
+
+

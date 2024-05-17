@@ -1,0 +1,232 @@
+
+<header>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <button class="custom-icon-button" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="navbar-brand" style="margin-top: 10px; font-size: 24px;">TaskFlow!</h1>
+      <button [routerLink]="['/profil']" class="person-button" mat-icon-button
+      style="margin-top: 6px; ">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button   style="margin-top: 0px;margin-left: auto; background-color: #9ebdd6 ;color: black;" class="logout-button" mat-icon-button>
+        <mat-icon (click)="logout()" >exit_to_app</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="container-fluid">
+    <mat-sidenav #sidenav opened="false" mode="side" class="col-md-2 d-none d-md-block bg-light sidebar">
+      <mat-nav-list>
+        
+        <mat-list-item>
+          <a [routerLink]="['/acceuil']">Accueil</a>
+        </mat-list-item>
+       <mat-list-item>
+        <a  [routerLink]="['/list-taches']">Liste des tâches</a>
+       </mat-list-item>
+       <mat-list-item>
+        <a  [routerLink]="['/ajouter']">Ajouter une tâche</a>
+       </mat-list-item>
+
+       
+    
+       
+        
+      </mat-nav-list>
+    </mat-sidenav>
+    
+  
+    <mat-sidenav-content class="main-content">
+      <div style="height: 88vh;">
+        
+  
+  
+        <ng-container>
+          
+
+          <section class="task-list">
+            <!--SEARCH-->
+            <div style="display: flex; justify-content: center; margin-top: 3rem; margin-bottom: 1.5rem;">
+              <input type="text" placeholder="Rechercher une tâche" [(ngModel)]="searchTerm" style="border-radius: 1.5rem 0 0 1.5rem; border: none; height: 3rem; width: 20rem; background-color: #f1f1f1; padding: 1.2rem; font-size: 1.1rem; font-weight: 500; outline: none; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+              <button (click)="searchTaches()" style="color: black; height: 3rem; width: 4rem; font-size: 1rem; border-radius: 0 1.5rem 1.5rem 0; border: none; background-color: #9ebdd6; color: black; opacity: 0.8; outline: none; cursor: pointer; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+                <i class="fas fa-search"></i> 
+              </button>
+            </div>
+
+
+
+
+            <!-- En-tête du tableau -->
+            <div class="task task-header">
+              <div class="task-details">
+                <header class="title-status">
+                  <h3>Tâche</h3>
+                  <p>État - Date</p>
+                </header>
+                <p class="description">Description</p>
+              </div>
+              <div class="task-actions">Actions</div>
+            </div>
+          
+            <!-- Les tâches -->
+            <article class="task" *ngFor="let tache of taches">
+              <div class="task-details">
+                <header class="title-status">
+                  <h3 [ngClass]="{'completed': tache.etat}">{{ tache.titre }}</h3>
+                  <p class="task-status" [ngClass]="{'completed': tache.etat}">
+                    {{ tache.etat ? 'Terminée' : 'En cours' }} - {{ tache.date | date }}
+                  </p>
+                </header>
+                <p class="description">{{ tache.description }}</p>
+              </div>
+              <div class="task-actions">
+                <input  type="checkbox" [(ngModel)]="tache.etat" id="task{{ tache._id }}"  (change)="updateEtatTache(tache)">
+                <label for="task{{ tache._id }}" style="margin: 20px;size: 50px;"></label>
+                <button (click)="openModifyDialog(tache)"style="background-color: transparent; color: blue;border: none;margin: 10px;padding: 10px;"><i class="fas fa-edit"></i></button>
+                <button (click)="deleteTache(tache._id)" style="background-color: transparent; color: red;border: none;"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            </article>
+          
+      <div style=" display: flex;
+      justify-content:center; margin: 20px;">     <button (click)="addTache()" style="   display: block;
+           
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 20px;
+            font-size: 14px;">Ajouter une tâche</button>
+            <button (click)="printTaskList()" style="   display: block;
+            margin: 20px;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;">Imprimer</button>
+      </div>
+          </section>
+          
+          <!-- list-taches.component.html -->
+
+
+          <!--MAIL-->
+          <div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
+            <input type="email" placeholder="Entrez votre e-mail" [(ngModel)]="recipientEmail" style="border-radius: 1.5rem 0 0 1.5rem; border: none; height: 3rem; width: 20rem; background-color: #f1f1f1; padding: 1.2rem; font-size: 1.1rem; font-weight: 500; outline: none; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);margin-bottom: 20px;">
+            <button (click)="printTaskList2()" style="color: black; height: 3rem; width: 4rem; font-size: 1rem; border-radius: 0 1.5rem 1.5rem 0; border: none; background-color: #9ebdd6; color: black; opacity: 0.8; outline: none; cursor: pointer; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+              <i class="fas fa-envelope"></i> <!-- Ajout de l'icône d'enveloppe -->
+            </button>
+          </div>
+
+
+          
+          
+          <!-- Ajoutez ce formulaire -->
+<div *ngIf="showAddForm" class="card mx-auto" style="
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  max-width: 400px;
+  width: 100%;
+">
+  <h2 style="font-weight: bold;margin-bottom: 20px;text-align: center;">Ajouter une tâche</h2>
+  <form (ngSubmit)="onSubmit()" style="
+    display: flex;
+    flex-direction: column;
+    
+  ">
+                       <div style="
+                       margin-bottom: 16px;
+                     ">
+                       <label for="titre" style="
+                         font-weight: bold;
+                       ">Titre:</label>
+                       <input type="text" name="titre" [(ngModel)]="newTache.titre" required style="
+                         padding: 8px;
+                         margin: 8px 0;
+                         width: 100%;
+                         border: 1px solid #ccc;
+                         border-radius: 4px;
+                       ">
+                     </div>
+                 
+                     <div style="
+                       margin-bottom: 16px;
+                     ">
+                       <label for="description" style="
+                         font-weight: bold;
+                       ">Description:</label>
+                       <textarea name="description" [(ngModel)]="newTache.description" required style="
+                         padding: 8px;
+                         margin: 8px 0;
+                         width: 100%;
+                         border: 1px solid #ccc;
+                         border-radius: 4px;
+                       "></textarea>
+                     </div>
+
+    <div style="
+    margin-bottom: 16px;
+  ">
+    <label for="date" style="
+      font-weight: bold;
+    ">Date:</label>
+    <input type="date" name="date" [(ngModel)]="newTache.date" required [min]="today" style="
+      padding: 8px;
+      margin: 8px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    ">
+  </div>
+
+    <div style="
+      display: flex;
+      justify-content: space-between;
+    ">
+      <button type="submit" style="padding: 8px; margin: 8px 0;   display: block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;">Ajouter</button>
+      <button type="button" (click)="resetForm()" style="padding: 8px; margin: 8px 0;   display: block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;">Annuler</button>
+    </div>
+  </form>
+</div>
+
+          
+
+
+
+          
+        </ng-container>
+      </div>
+    </mat-sidenav-content>
+    
+  </mat-sidenav-container>
+  </header>
+
+
+
+
+  
+  <app-footer></app-footer>

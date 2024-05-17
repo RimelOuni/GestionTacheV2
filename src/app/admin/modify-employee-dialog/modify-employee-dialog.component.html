@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Modifier Utilisateur</h1>
+<div mat-dialog-content>
+  <form [formGroup]="modifyUserForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="nom" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="modifyUserForm.get('email')?.invalid && modifyUserForm.get('email')?.touched">
+        Veuillez entrer une adresse e-mail valide.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput type="password" formControlName="motdepasse" />
+      <mat-error *ngIf="modifyUserForm.get('motdepasse')?.invalid && modifyUserForm.get('motdepasse')?.touched">
+        Veuillez entrer un mot de passe d'au moins 8 caractères.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions style="display: flex; text-align: center;">
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button color="primary" (click)="onSaveClick()">Enregistrer</button>
+</div>

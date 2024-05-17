@@ -1,0 +1,34 @@
+<section class="signup-section">
+  <div class="signup-container">
+    <h2>S'INSCRIRE</h2>
+    <form [formGroup]="myForm" (submit)="submitForm()">
+      <div class="form-group">
+        <input type="text" formControlName="nom" class="form-control form-control-lg" required />
+        <label class="form-label" for="form3Example1m">Nom</label>
+        <div *ngIf="myForm.controls['nom'].invalid && (myForm.controls['nom'].dirty || myForm.controls['nom'].touched)"
+          class="error-message">
+          Nom obligatoire
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="email" class="form-control form-control-lg" required />
+        <label class="form-label" for="form3Example8">Email</label>
+        <div *ngIf="myForm.controls['email'].invalid && (myForm.controls['email'].dirty || myForm.controls['email'].touched)"
+          class="error-message">
+          L'e-mail doit être valide.
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" formControlName="motdepasse" class="form-control form-control-lg" required />
+        <label class="form-label" for="form3Example8">Mot de passe</label>
+        <div *ngIf="myForm.controls['motdepasse'].invalid && (myForm.controls['motdepasse'].dirty || myForm.controls['motdepasse'].touched)"
+          class="error-message">
+          Mot de passe doit être valide (Minimum 8 caractères, Caractère majuscule, Caractère minuscule, Nombre et un Caractère speciale).
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="signup-button">S'inscrire</button>
+      </div>
+    </form>
+  </div>
+</section>

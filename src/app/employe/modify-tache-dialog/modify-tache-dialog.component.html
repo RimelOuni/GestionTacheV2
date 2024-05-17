@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Modifier Tâche</h1>
+<div mat-dialog-content>
+  <form [formGroup]="modifyTacheForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Titre</mat-label>
+      <input matInput formControlName="titre" aria-label="Titre de la tâche" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" aria-label="Description de la tâche"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" formControlName="date" required [min]="today" aria-label="Date de la tâche" />
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" aria-label="Annuler la modification de la tâche">Annuler</button>
+  <button mat-button color="primary" (click)="onSaveClick()" aria-label="Enregistrer les modifications de la tâche">Enregistrer</button>
+</div>

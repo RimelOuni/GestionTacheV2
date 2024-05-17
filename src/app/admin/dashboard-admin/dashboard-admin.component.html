@@ -1,0 +1,61 @@
+<div class="user-list-container">
+    <h2 style="text-align: center;">Liste des utilisateurs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.nom }}</td>
+                <td>{{ user.email }}</td>
+                
+                <td>
+                    <button style="color: #3498db;" (click)="openModifyDialog(user)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button style="color: red;" (click)="deleteEmployee(user._id)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+        <button (click)="toggleAddUserCard()" class="add-user-button">
+            <i class="fas fa-user-plus"></i> Ajouter Utilisateur
+        </button>
+    </div>
+</div>
+
+
+<div class="add-user-container" *ngIf="showAddUserCard" [formGroup]="newUserForm" style="margin-bottom: 50px; margin-top: 30px;">
+    <h2 style="text-align: center;">Add User</h2>
+  
+    <label for="nom">Name:</label>
+    <input type="text" id="nom" formControlName="nom" />
+  
+    <label for="email">Email:</label>
+    <input type="text" id="email" formControlName="email" [ngClass]="{'is-invalid': newUserForm.get('email')?.invalid && newUserForm.get('email')?.touched}" />
+    <div *ngIf="newUserForm.get('email')?.invalid && newUserForm.get('email')?.touched" class="invalid-feedback text-danger">
+      Please enter a valid email.
+    </div>
+  
+    <label for="motdepasse">Password:</label>
+    <input type="password" id="motdepasse" formControlName="motdepasse" [ngClass]="{'is-invalid': newUserForm.get('motdepasse')?.invalid && newUserForm.get('motdepasse')?.touched}" />
+    <div *ngIf="newUserForm.get('motdepasse')?.invalid && newUserForm.get('motdepasse')?.touched" class="invalid-feedback text-danger">
+      Please enter a password with at least 8 characters.
+    </div>
+  
+    <div class="button-container">
+        <button (click)="addEmployee()" class="action-button">
+            <i class="fas fa-user-plus"></i> Ajouter
+        </button>
+        <button (click)="resetForm()" class="action-button cancel-button">
+            <i class="fas fa-times-circle"></i> Annuler
+        </button>
+    </div>
+</div>
